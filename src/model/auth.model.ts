@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import * as CryptoJS from 'crypto-js/sha256';
 import { getRepository } from "typeorm";
-import { Account } from "../entity/account";
+import { AccountEntity } from "../entity/account";
 
 
 export class AuthModel{
@@ -13,7 +13,7 @@ export class AuthModel{
             phone : req.body.phone,
             password : verify_pw
         }
-        let cek = await getRepository(Account).findOne(body);
+        let cek = await getRepository(AccountEntity).findOne(body);
         if(!cek){
             return res.status(404).json({message : 'Phone or Password is WRONG !', status : "failed"});
         }else{

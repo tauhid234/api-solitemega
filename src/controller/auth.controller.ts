@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getConnection } from "typeorm";
-import { Account } from "../entity/account";
+import { AccountEntity } from "../entity/account";
 import { AuthModel } from "../model/auth.model";
 
 
@@ -9,7 +9,7 @@ export class AuthController{
 
     public LoginController(req : Request, res : Response){
         const model = new AuthModel;
-        const prop = getConnection().getMetadata(Account).ownColumns.map(column => column.propertyName);
+        const prop = getConnection().getMetadata(AccountEntity).ownColumns.map(column => column.propertyName);
         const slice = prop.slice(1);
 
         const req_body = req.body;
