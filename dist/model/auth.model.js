@@ -31,7 +31,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthModel = void 0;
 const CryptoJS = __importStar(require("crypto-js/sha256"));
 const typeorm_1 = require("typeorm");
-const account_entity_1 = require("../entity/account.entity");
+const account_1 = require("../entity/account");
 class AuthModel {
     Login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -40,7 +40,7 @@ class AuthModel {
                 phone: req.body.phone,
                 password: verify_pw
             };
-            let cek = yield (0, typeorm_1.getRepository)(account_entity_1.Account).findOne(body);
+            let cek = yield (0, typeorm_1.getRepository)(account_1.Account).findOne(body);
             if (!cek) {
                 return res.status(404).json({ message: 'Phone or Password is WRONG !', status: "failed" });
             }

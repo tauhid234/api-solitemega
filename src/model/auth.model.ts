@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import * as CryptoJS from 'crypto-js/sha256';
 import { getRepository } from "typeorm";
-import { Account } from "../entity/account.entity";
+import { Account } from "../entity/account";
 
 
 export class AuthModel{

@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Account } from "../entity/account.entity";
+import { Account } from "../entity/account";
 import * as CryptoJS from 'crypto-js/sha256';
 
 
