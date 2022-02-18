@@ -1,0 +1,29 @@
+{
+  "name": "api_solitemega",
+  "version": "1.0.0",
+  "description": "API SOLITEMEGA V.1",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "tsc-watch --onSuccess \"node dist/index.js\""
+  },
+  "author": "muhammad syifa tauhid",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
+    "tsc-watch": "^4.6.0",
+    "typeorm": "^0.2.43"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.18",
+    "typescript": "^4.5.5"
+  }
+}
