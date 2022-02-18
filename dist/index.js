@@ -7,11 +7,18 @@ const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 const typeorm_1 = require("typeorm");
+// AUTH ROUTER
+const auth_router_1 = __importDefault(require("./router/auth.router"));
+// ACCOUNT ROUTER
+const account_router_1 = __importDefault(require("./router/account.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
+// ROUTE
+app.use(account_router_1.default);
+app.use(auth_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);
