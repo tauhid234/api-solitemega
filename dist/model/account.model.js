@@ -30,25 +30,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountModel = void 0;
 const typeorm_1 = require("typeorm");
-const account_1 = require("../entity/account");
+const account_entity_1 = require("../entity/account.entity");
 const CryptoJS = __importStar(require("crypto-js/sha256"));
+const message_util_1 = require("../lib/util/message.util");
 class AccountModel {
     createAccount(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let cek = yield (0, typeorm_1.getRepository)(account_1.Account).findOne({ phone: req.body.phone });
+            let cek = yield (0, typeorm_1.getRepository)(account_entity_1.AccountEntity).findOne({ phone: req.body.phone });
             if (!cek) {
                 let encrypt_aes = CryptoJS.default(req.body.password).toString();
                 let body = {
                     phone: req.body.phone,
                     password: encrypt_aes
                 };
-                const newAccount = (0, typeorm_1.getRepository)(account_1.Account).create(body);
-                const result = yield (0, typeorm_1.getRepository)(account_1.Account).save(newAccount);
-                return res.status(200).json({ message: result, status: "success" });
+                const newAccount = (0, typeorm_1.getRepository)(account_entity_1.AccountEntity).create(body);
+                const result = yield (0, typeorm_1.getRepository)(account_entity_1.AccountEntity).save(newAccount);
+                return res.status(200).send(message_util_1.MessageUtil.success(result));
             }
             else {
                 console.log("CEK ", cek);
-                return res.status(200).json({ message: 'Data already exist', status: "failed" });
+                return res.status(200).send(message_util_1.MessageUtil.failed("Data Already Exist !", 200));
             }
         });
     }

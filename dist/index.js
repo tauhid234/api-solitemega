@@ -11,14 +11,19 @@ const typeorm_1 = require("typeorm");
 const auth_router_1 = __importDefault(require("./router/auth.router"));
 // ACCOUNT ROUTER
 const account_router_1 = __importDefault(require("./router/account.router"));
+// PARAMETER
+const pendidikan_router_1 = __importDefault(require("./router/pendidikan.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
-// ROUTE
-app.use(account_router_1.default);
+// ROUTE AUTH
 app.use(auth_router_1.default);
+// ROUTE ACCOUNT
+app.use(account_router_1.default);
+// ROUTE PARAMETER
+app.use(pendidikan_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);

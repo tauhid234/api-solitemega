@@ -10,7 +10,8 @@ import authRouter from './router/auth.router';
 // ACCOUNT ROUTER
 import accountRouter from './router/account.router';
 
-
+// PARAMETER
+import pendidikanRouter from './router/pendidikan.router';
 
 
 const app = express();
@@ -22,9 +23,14 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 
-// ROUTE
-app.use(accountRouter);
+// ROUTE AUTH
 app.use(authRouter);
+
+// ROUTE ACCOUNT
+app.use(accountRouter);
+
+// ROUTE PARAMETER
+app.use(pendidikanRouter);
 
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ",3000);

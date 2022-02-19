@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const typeorm_1 = require("typeorm");
-const account_1 = require("../entity/account");
+const account_entity_1 = require("../entity/account.entity");
 const auth_model_1 = require("../model/auth.model");
 class AuthController {
     LoginController(req, res) {
         const model = new auth_model_1.AuthModel;
-        const prop = (0, typeorm_1.getConnection)().getMetadata(account_1.Account).ownColumns.map(column => column.propertyName);
+        const prop = (0, typeorm_1.getConnection)().getMetadata(account_entity_1.AccountEntity).ownColumns.map(column => column.propertyName);
         const slice = prop.slice(1);
         const req_body = req.body;
         let condition_phone = /^\d+$/;

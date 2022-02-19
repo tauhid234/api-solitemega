@@ -9,23 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Account = void 0;
+exports.AccountEntity = void 0;
 const typeorm_1 = require("typeorm");
-let Account = class Account {
+let AccountEntity = class AccountEntity {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
-], Account.prototype, "id", void 0);
+], AccountEntity.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ length: 16 }),
     __metadata("design:type", String)
-], Account.prototype, "phone", void 0);
+], AccountEntity.prototype, "phone", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
-], Account.prototype, "password", void 0);
-Account = __decorate([
+], AccountEntity.prototype, "password", void 0);
+AccountEntity = __decorate([
     (0, typeorm_1.Entity)()
-], Account);
-exports.Account = Account;
+], AccountEntity);
+exports.AccountEntity = AccountEntity;
