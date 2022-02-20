@@ -4,7 +4,7 @@ import { Request, Response} from "express";
 
 export class ValidateBodyHelper{
 
-    public validateBodyAdd(slice : any, req : Request){
+    public validateEntity(slice : any, req : Request){
 
         for(let i = 0; i < Object.keys(slice).length; i++){
             let s = slice[i].valueOf();

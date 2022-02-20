@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const status_perkawinan_controller_1 = require("../../controller/parameter/status-perkawinan.controller");
+const statusPerkawinanController = new status_perkawinan_controller_1.StatusPerkawinanController;
+const router = (0, express_1.Router)();
+router.post("/solite-api/status-perkawinan/add", statusPerkawinanController.statusPerkawinanAddController);
+router.post("/solite-api/status-perkawinan/update", statusPerkawinanController.statusPerkawinanUpdateController);
+router.post("/solite-api/status-perkawinan/select", statusPerkawinanController.statusPerkawinanSelectAllController);
+router.post("/solite-api/status-perkawinan/delete", statusPerkawinanController.statusPerkawinanDeleteController);
+exports.default = router;

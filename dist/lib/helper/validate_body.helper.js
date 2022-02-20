@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ValidateBodyHelper = void 0;
 class ValidateBodyHelper {
-    validateBodyAdd(slice, req) {
+    validateEntity(slice, req) {
         for (let i = 0; i < Object.keys(slice).length; i++) {
             let s = slice[i].valueOf();
             let bodys = Object.keys(req.body);

@@ -11,7 +11,8 @@ import authRouter from './router/auth.router';
 import accountRouter from './router/account.router';
 
 // PARAMETER
-import pendidikanRouter from './router/pendidikan.router';
+import pendidikanRouter from './router/parameter/pendidikan.router';
+import statusPerkawinanRouter from './router/parameter/status-perkawinan.router';
 
 
 const app = express();
@@ -31,6 +32,7 @@ app.use(accountRouter);
 
 // ROUTE PARAMETER
 app.use(pendidikanRouter);
+app.use(statusPerkawinanRouter);
 
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ",3000);

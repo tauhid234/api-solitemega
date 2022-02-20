@@ -16,7 +16,7 @@ class AccountController {
         let condition_phone = /^\d+$/;
         let condition_pw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
         let validate_body = new validate_body_helper_1.ValidateBodyHelper;
-        let output = validate_body.validateBodyAdd(slice, req);
+        let output = validate_body.validateEntity(slice, req);
         if (output) {
             return res.status(400).send(message_util_1.MessageUtil.failed("Required field body " + output, 400));
         }

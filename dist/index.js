@@ -12,7 +12,8 @@ const auth_router_1 = __importDefault(require("./router/auth.router"));
 // ACCOUNT ROUTER
 const account_router_1 = __importDefault(require("./router/account.router"));
 // PARAMETER
-const pendidikan_router_1 = __importDefault(require("./router/pendidikan.router"));
+const pendidikan_router_1 = __importDefault(require("./router/parameter/pendidikan.router"));
+const status_perkawinan_router_1 = __importDefault(require("./router/parameter/status-perkawinan.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
@@ -25,5 +26,6 @@ app.use(auth_router_1.default);
 app.use(account_router_1.default);
 // ROUTE PARAMETER
 app.use(pendidikan_router_1.default);
+app.use(status_perkawinan_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);

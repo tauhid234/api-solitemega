@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
-import { Pendidikan } from "../entity/pendidikan.entity";
-import { MessageUtil } from "../lib/util/message.util";
+import { Pendidikan } from "../../entity/parameter/pendidikan.entity";
+import { MessageUtil } from "../../lib/util/message.util";
 
 
 

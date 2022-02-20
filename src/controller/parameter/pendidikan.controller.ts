@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import { getConnection } from "typeorm";
-import { UpdatePendidikanDto } from "../dto/pendidikan/update.dto";
-import { Pendidikan } from "../entity/pendidikan.entity";
-import { ValidateBodyHelper } from "../lib/helper/validate_body.helper";
-import { MessageUtil } from "../lib/util/message.util";
-import { PendidikanModel } from "../model/pendidikan.model";
+import { UpdatePendidikanDto } from "../../dto/pendidikan/update.dto";
+import { Pendidikan } from "../../entity/parameter/pendidikan.entity";
+import { ValidateBodyHelper } from "../../lib/helper/validate_body.helper";
+import { MessageUtil } from "../../lib/util/message.util";
+import { PendidikanModel } from "../../model/parameter/pendidikan.model";
 
 
 
@@ -21,7 +21,7 @@ export class PendidikanController{
 
 
         let validate_body = new ValidateBodyHelper;
-        let output = validate_body.validateBodyAdd(slice, req);
+        let output = validate_body.validateEntity(slice, req);
         if(output){
             return res.status(400).send(MessageUtil.failed("Required field body "+output, 400));
         }

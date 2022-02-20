@@ -22,7 +22,7 @@ export class AccountController{
         let condition_pw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
 
         let validate_body = new ValidateBodyHelper;
-        let output = validate_body.validateBodyAdd(slice, req);
+        let output = validate_body.validateEntity(slice, req);
         if(output){
             return res.status(400).send(MessageUtil.failed("Required field body "+output, 400));
         }
