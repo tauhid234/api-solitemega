@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { getConnection } from "typeorm";
 import { AccountEntity } from "../entity/account.entity";
+import { ValidateBodyHelper } from "../lib/helper/validate_body.helper";
 import { AuthModel } from "../model/auth.model";
 
 
@@ -16,12 +17,10 @@ export class AuthController{
 
         let condition_phone = /^\d+$/;
 
-        for(let i = 0; i < Object.keys(slice).length; i++){
-            let s = slice[i].valueOf();
-            let body = Object.keys(req.body);
-            if(body[i] != s){
-                return res.status(400).json({message : "Required field body "+s});
-            }
+        let validate_body = new ValidateBodyHelper;
+        let output = validate_body.validateEntity(slice, req, res);
+        if(output){
+            return output;
         }
 
         if(!req_body.phone.match(condition_phone)){

@@ -14,9 +14,9 @@ class PendidikanController {
         const slice = prop.slice(1);
         const req_body = req.body;
         let validate_body = new validate_body_helper_1.ValidateBodyHelper;
-        let output = validate_body.validateEntity(slice, req);
+        let output = validate_body.validateEntity(slice, req, res);
         if (output) {
-            return res.status(400).send(message_util_1.MessageUtil.failed("Required field body " + output, 400));
+            return output;
         }
         return model.AddPendidikan(req_body, res);
     }

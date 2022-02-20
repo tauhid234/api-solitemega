@@ -16,9 +16,9 @@ class AccountController {
         let condition_phone = /^\d+$/;
         let condition_pw = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/;
         let validate_body = new validate_body_helper_1.ValidateBodyHelper;
-        let output = validate_body.validateEntity(slice, req);
+        let output = validate_body.validateEntity(slice, req, res);
         if (output) {
-            return res.status(400).send(message_util_1.MessageUtil.failed("Required field body " + output, 400));
+            return output;
         }
         if (req_body.phone.length > 16) {
             return res.status(406).send(message_util_1.MessageUtil.failed("Max length phone is 16", 406));

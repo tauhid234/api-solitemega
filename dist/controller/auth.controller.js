@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const typeorm_1 = require("typeorm");
 const account_entity_1 = require("../entity/account.entity");
+const validate_body_helper_1 = require("../lib/helper/validate_body.helper");
 const auth_model_1 = require("../model/auth.model");
 class AuthController {
     LoginController(req, res) {
@@ -11,12 +12,10 @@ class AuthController {
         const slice = prop.slice(1);
         const req_body = req.body;
         let condition_phone = /^\d+$/;
-        for (let i = 0; i < Object.keys(slice).length; i++) {
-            let s = slice[i].valueOf();
-            let body = Object.keys(req.body);
-            if (body[i] != s) {
-                return res.status(400).json({ message: "Required field body " + s });
-            }
+        let validate_body = new validate_body_helper_1.ValidateBodyHelper;
+        let output = validate_body.validateEntity(slice, req, res);
+        if (output) {
+            return output;
         }
         if (!req_body.phone.match(condition_phone)) {
             return res.status(406).json({ message: 'Required only number' });

@@ -9,6 +9,7 @@ import authRouter from './router/auth.router';
 
 // ACCOUNT ROUTER
 import accountRouter from './router/account.router';
+import porfileRouter from './router/profile.router';
 
 // PARAMETER
 import pendidikanRouter from './router/parameter/pendidikan.router';
@@ -29,6 +30,7 @@ app.use(authRouter);
 
 // ROUTE ACCOUNT
 app.use(accountRouter);
+app.use(porfileRouter);
 
 // ROUTE PARAMETER
 app.use(pendidikanRouter);

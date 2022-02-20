@@ -11,6 +11,7 @@ const typeorm_1 = require("typeorm");
 const auth_router_1 = __importDefault(require("./router/auth.router"));
 // ACCOUNT ROUTER
 const account_router_1 = __importDefault(require("./router/account.router"));
+const profile_router_1 = __importDefault(require("./router/profile.router"));
 // PARAMETER
 const pendidikan_router_1 = __importDefault(require("./router/parameter/pendidikan.router"));
 const status_perkawinan_router_1 = __importDefault(require("./router/parameter/status-perkawinan.router"));
@@ -24,6 +25,7 @@ app.use(express_1.default.json());
 app.use(auth_router_1.default);
 // ROUTE ACCOUNT
 app.use(account_router_1.default);
+app.use(profile_router_1.default);
 // ROUTE PARAMETER
 app.use(pendidikan_router_1.default);
 app.use(status_perkawinan_router_1.default);

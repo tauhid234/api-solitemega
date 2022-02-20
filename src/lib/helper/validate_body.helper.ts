@@ -1,16 +1,20 @@
 import { Request, Response} from "express";
+import { MessageUtil } from "../util/message.util";
 
 
 
 export class ValidateBodyHelper{
 
-    public validateEntity(slice : any, req : Request){
+    public validateEntity(slice : any, req : Request, res : Response){
+    
+        let path = req.path;
+        let end_path = path.split("/");
 
         for(let i = 0; i < Object.keys(slice).length; i++){
             let s = slice[i].valueOf();
             let bodys = Object.keys(req.body);
             if(bodys[i] != s){
-                return s;
+                return res.status(400).send(MessageUtil.failed("Field "+s+" is required for "+end_path[3]+" data", 400));
             }
         }
 
