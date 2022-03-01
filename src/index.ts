@@ -15,6 +15,9 @@ import porfileRouter from './router/profile.router';
 import pendidikanRouter from './router/parameter/pendidikan.router';
 import statusPerkawinanRouter from './router/parameter/status-perkawinan.router';
 
+// PRODUCT
+import categoryRouter from './router/product/category.router';
+
 
 const app = express();
 createConnection();
@@ -35,6 +38,9 @@ app.use(porfileRouter);
 // ROUTE PARAMETER
 app.use(pendidikanRouter);
 app.use(statusPerkawinanRouter);
+
+// ROUTE PRODUCT
+app.use(categoryRouter);
 
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ",3000);

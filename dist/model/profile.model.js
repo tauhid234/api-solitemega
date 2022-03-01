@@ -46,7 +46,7 @@ class ProfileModel {
             }
             let create = yield (0, typeorm_1.getRepository)(profile_entity_1.Profile).create(req.body);
             let save = yield (0, typeorm_1.getRepository)(profile_entity_1.Profile).save(create);
-            return res.status(200).send(message_util_1.MessageUtil.success(save));
+            return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil disimpan", save));
         });
     }
 }

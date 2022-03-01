@@ -15,6 +15,8 @@ const profile_router_1 = __importDefault(require("./router/profile.router"));
 // PARAMETER
 const pendidikan_router_1 = __importDefault(require("./router/parameter/pendidikan.router"));
 const status_perkawinan_router_1 = __importDefault(require("./router/parameter/status-perkawinan.router"));
+// PRODUCT
+const category_router_1 = __importDefault(require("./router/product/category.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
@@ -29,5 +31,7 @@ app.use(profile_router_1.default);
 // ROUTE PARAMETER
 app.use(pendidikan_router_1.default);
 app.use(status_perkawinan_router_1.default);
+// ROUTE PRODUCT
+app.use(category_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);

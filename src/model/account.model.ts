@@ -22,7 +22,7 @@ export class AccountModel{
 
         const newAccount = getRepository(AccountEntity).create(body);        
         const result = await getRepository(AccountEntity).save(newAccount);
-        return res.status(200).send(MessageUtil.success(result));
+        return res.status(200).send(MessageUtil.success("Data berhasil disimpan",result));
         }else{
             console.log("CEK ",cek);
             return res.status(200).send(MessageUtil.failed("Data Already Exist !", 200));

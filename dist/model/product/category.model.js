@@ -9,17 +9,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.StatusPerkawinanModel = void 0;
+exports.CategoryModel = void 0;
 const typeorm_1 = require("typeorm");
-const status_perkawinan_entity_1 = require("../../entity/parameter/status-perkawinan.entity");
+const category_entity_1 = require("../../entity/product/category.entity");
 const message_util_1 = require("../../lib/util/message.util");
-class StatusPerkawinanModel {
-    AddStatusPerkawinan(body, res) {
+class CategoryModel {
+    AddCategory(body, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let cek = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).findOne(body);
+            let cek = yield (0, typeorm_1.getRepository)(category_entity_1.Category).findOne(body);
             if (!cek) {
-                const newAccount = (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).create(body);
-                const result = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).save(newAccount);
+                const newAccount = (0, typeorm_1.getRepository)(category_entity_1.Category).create(body);
+                const result = yield (0, typeorm_1.getRepository)(category_entity_1.Category).save(newAccount);
                 return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil disimpan", result));
             }
             else {
@@ -27,35 +27,36 @@ class StatusPerkawinanModel {
             }
         });
     }
-    UpdateStatusPerkawinan(body, res) {
+    UpdateCategory(body, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let find = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).findOne(body.id);
+            let find = yield (0, typeorm_1.getRepository)(category_entity_1.Category).findOne(body.id);
             if (find) {
-                find.nama_perkawinan = body.nama_perkawinan;
-                find.kode_perkawinan = body.kode_perkawinan;
-                let output = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).save(find);
-                return res.status(200).send(message_util_1.MessageUtil.success("Data ID Status Perkawinan " + body.id + " has been success updated", output));
+                find.nama_kategori = body.nama_kategori;
+                find.kode_kategori = body.kode_kategori;
+                find.icon = body.icon;
+                let output = yield (0, typeorm_1.getRepository)(category_entity_1.Category).save(find);
+                return res.status(200).send(message_util_1.MessageUtil.success("Data ID Kategori " + body.id + " has been success updated", output));
             }
             else {
                 return res.status(404).send(message_util_1.MessageUtil.failed("Data Is Not Found", 404));
             }
         });
     }
-    SelectAllStatusPerkawinan(req, res) {
+    SelectAllCategory(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let output = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).find(req.body);
+            let output = yield (0, typeorm_1.getRepository)(category_entity_1.Category).find(req.body);
             if (output.length == 0) {
                 return res.status(404).send(message_util_1.MessageUtil.failed("Data tidak ditemukan", 404));
             }
             return res.status(200).send(message_util_1.MessageUtil.success("Data ditemukan", output));
         });
     }
-    DeleteStatusPerkawinan(body, res) {
+    DeleteCategory(body, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let find = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).findOne(body.id);
+            let find = yield (0, typeorm_1.getRepository)(category_entity_1.Category).findOne(body.id);
             if (find) {
-                let output = yield (0, typeorm_1.getRepository)(status_perkawinan_entity_1.StatusPerkawinan).remove(find);
-                return res.status(200).send(message_util_1.MessageUtil.success("Data ID Status Perkawinan " + body.id + " has been success delete", output));
+                let output = yield (0, typeorm_1.getRepository)(category_entity_1.Category).remove(find);
+                return res.status(200).send(message_util_1.MessageUtil.success("Data ID Kategori " + body.id + " has been success delete", output));
             }
             else {
                 return res.status(404).send(message_util_1.MessageUtil.failed("Data Is Not Found", 404));
@@ -63,4 +64,4 @@ class StatusPerkawinanModel {
         });
     }
 }
-exports.StatusPerkawinanModel = StatusPerkawinanModel;
+exports.CategoryModel = CategoryModel;

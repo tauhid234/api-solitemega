@@ -1,9 +1,10 @@
 
 export class MessageUtil{
 
-    public static success(msg : any){
+    public static success(msg : any, data : any){
         let m = {
             message : msg,
+            data : data,
             status : "success"
         }
 

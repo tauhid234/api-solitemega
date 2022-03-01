@@ -2,9 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MessageUtil = void 0;
 class MessageUtil {
-    static success(msg) {
+    static success(msg, data) {
         let m = {
             message: msg,
+            data: data,
             status: "success"
         };
         return m;

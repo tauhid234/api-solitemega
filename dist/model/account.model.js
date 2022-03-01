@@ -45,7 +45,7 @@ class AccountModel {
                 };
                 const newAccount = (0, typeorm_1.getRepository)(account_entity_1.AccountEntity).create(body);
                 const result = yield (0, typeorm_1.getRepository)(account_entity_1.AccountEntity).save(newAccount);
-                return res.status(200).send(message_util_1.MessageUtil.success(result));
+                return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil disimpan", result));
             }
             else {
                 console.log("CEK ", cek);

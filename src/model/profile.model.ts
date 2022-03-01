@@ -48,7 +48,7 @@ export class ProfileModel{
         let save = await getRepository(Profile).save(create);
         
         
-        return res.status(200).send(MessageUtil.success(save));
+        return res.status(200).send(MessageUtil.success("Data berhasil disimpan",save));
 
 
 
