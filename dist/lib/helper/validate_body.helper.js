@@ -14,11 +14,13 @@ class ValidateBodyHelper {
             }
         }
     }
-    validate(source, type) {
+    validate(source, type, res, req) {
         let obj = new type();
+        let path = req.path;
+        let end_path = path.split("/");
         for (let key in obj) {
             if (!source.hasOwnProperty(key)) {
-                return key;
+                return res.status(400).send(message_util_1.MessageUtil.failed("Field " + key + " is required for " + end_path[3] + " data", 400));
             }
         }
     }

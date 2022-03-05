@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const cart_controller_1 = require("../../controller/product/cart.controller");
+const cartController = new cart_controller_1.CartController;
+const router = (0, express_1.Router)();
+router.post("/solite-api/cart/add", cartController.cartAddController);
+router.post("/solite-api/cart/select", cartController.cartSelectController);
+router.post("/solite-api/cart/delete", cartController.cartDeleteController);
+exports.default = router;

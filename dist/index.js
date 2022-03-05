@@ -6,6 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
+// upload
+const express_fileupload_1 = __importDefault(require("express-fileupload"));
 const typeorm_1 = require("typeorm");
 // AUTH ROUTER
 const auth_router_1 = __importDefault(require("./router/auth.router"));
@@ -17,12 +19,21 @@ const pendidikan_router_1 = __importDefault(require("./router/parameter/pendidik
 const status_perkawinan_router_1 = __importDefault(require("./router/parameter/status-perkawinan.router"));
 // PRODUCT
 const category_router_1 = __importDefault(require("./router/product/category.router"));
+const cart_router_1 = __importDefault(require("./router/product/cart.router"));
+const goods_router_1 = __importDefault(require("./router/product/goods.router"));
+const product_image_router_1 = __importDefault(require("./router/product/product_image.router"));
+const favorite_router_1 = __importDefault(require("./router/product/favorite.router"));
+// PAYMENT
+const address_shipment_router_1 = __importDefault(require("./router/payment/address_shipment.router"));
+// FORMS
+const submission_credit_router_1 = __importDefault(require("./router/forms/submission_credit.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
 app.use((0, cors_1.default)());
 app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.json());
+app.use((0, express_fileupload_1.default)());
 // ROUTE AUTH
 app.use(auth_router_1.default);
 // ROUTE ACCOUNT
@@ -33,5 +44,13 @@ app.use(pendidikan_router_1.default);
 app.use(status_perkawinan_router_1.default);
 // ROUTE PRODUCT
 app.use(category_router_1.default);
+app.use(cart_router_1.default);
+app.use(goods_router_1.default);
+app.use(product_image_router_1.default);
+app.use(favorite_router_1.default);
+// PAYMENT
+app.use(address_shipment_router_1.default);
+// FORMS
+app.use(submission_credit_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);

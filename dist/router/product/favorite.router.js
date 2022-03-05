@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const favorite_controller_1 = require("../../controller/product/favorite.controller");
+const favoriteController = new favorite_controller_1.FavoriteController;
+const router = (0, express_1.Router)();
+router.post("/solite-api/favorite/add", favoriteController.FavoriteAddController);
+router.post("/solite-api/favorite/select", favoriteController.FavoriteSelectController);
+router.post("/solite-api/favorite/delete", favoriteController.FavoriteDeleteController);
+exports.default = router;

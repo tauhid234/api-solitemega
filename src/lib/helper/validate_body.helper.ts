@@ -20,15 +20,17 @@ export class ValidateBodyHelper{
 
     }
 
-    public validate<T>(source : any, type : {new() : T})
+    public validate<T>(source : any, type : {new() : T}, res : Response, req : Request)
     {
         let obj = new type();
+        let path = req.path;
+        let end_path = path.split("/");
 
         for(let key in obj)
         {
             if(!source.hasOwnProperty(key))
             {
-                return key;
+                return res.status(400).send(MessageUtil.failed("Field "+key+" is required for "+end_path[3]+" data", 400));
             }
         }
     }

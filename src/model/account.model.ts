@@ -4,6 +4,8 @@ import { AccountEntity } from "../entity/account.entity";
 import * as CryptoJS from 'crypto-js/sha256';
 import { MessageUtil } from "../lib/util/message.util";
 
+import {v4 as uuidv4} from 'uuid';
+
 
 export class AccountModel{
 
@@ -16,6 +18,7 @@ export class AccountModel{
         let encrypt_aes = CryptoJS.default(req.body.password).toString();
 
         let body = {
+            id : uuidv4(),
             phone : req.body.phone,
             password : encrypt_aes
         }

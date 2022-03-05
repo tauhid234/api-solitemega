@@ -46,7 +46,10 @@ class AuthModel {
                 return res.status(404).send(message_util_1.MessageUtil.failed("Phone Or Password is Worng", 404));
             }
             else {
-                return res.status(200).send(message_util_1.MessageUtil.success("You're logged in", body));
+                let data_login = {
+                    id_user: cek.id
+                };
+                return res.status(200).send(message_util_1.MessageUtil.success("You're logged in", data_login));
             }
         });
     }

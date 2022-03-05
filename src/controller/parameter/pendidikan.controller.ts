@@ -33,7 +33,7 @@ export class PendidikanController{
         const model = new PendidikanModel;
 
         let validate_body = new ValidateBodyHelper;
-        let output = validate_body.validate(req.body, UpdatePendidikanDto);
+        let output = validate_body.validate(req.body, UpdatePendidikanDto, res, req);
 
         if(output){
             return res.status(400).send(MessageUtil.failed("Field "+output+" is required for update data", 400));

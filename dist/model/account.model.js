@@ -33,6 +33,7 @@ const typeorm_1 = require("typeorm");
 const account_entity_1 = require("../entity/account.entity");
 const CryptoJS = __importStar(require("crypto-js/sha256"));
 const message_util_1 = require("../lib/util/message.util");
+const uuid_1 = require("uuid");
 class AccountModel {
     createAccount(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -40,6 +41,7 @@ class AccountModel {
             if (!cek) {
                 let encrypt_aes = CryptoJS.default(req.body.password).toString();
                 let body = {
+                    id: (0, uuid_1.v4)(),
                     phone: req.body.phone,
                     password: encrypt_aes
                 };

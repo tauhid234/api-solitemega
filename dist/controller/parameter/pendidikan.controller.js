@@ -23,7 +23,7 @@ class PendidikanController {
     pendidikanUpdateController(req, res) {
         const model = new pendidikan_model_1.PendidikanModel;
         let validate_body = new validate_body_helper_1.ValidateBodyHelper;
-        let output = validate_body.validate(req.body, update_dto_1.UpdatePendidikanDto);
+        let output = validate_body.validate(req.body, update_dto_1.UpdatePendidikanDto, res, req);
         if (output) {
             return res.status(400).send(message_util_1.MessageUtil.failed("Field " + output + " is required for update data", 400));
         }

@@ -1,11 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 
 @Entity()
 export class AccountEntity{
 
-    @PrimaryGeneratedColumn()
-    id : number;
+    @PrimaryColumn()
+    id : string;
 
     @Column({length : 16})
     phone : string;
