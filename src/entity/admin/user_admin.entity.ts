@@ -2,13 +2,22 @@ import { Column, Entity, PrimaryColumn } from "typeorm";
 
 
 @Entity()
-export class AccountEntity{
+export class UserAdmin{
 
     @PrimaryColumn()
     id : string;
 
-    @Column({length : 16})
+    @Column()
     phone : string;
+
+    @Column()
+    email : string;
+
+    @Column()
+    nama : string;
+    
+    @Column()
+    username : string;
 
     @Column()
     password : string;

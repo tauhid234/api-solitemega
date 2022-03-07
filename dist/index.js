@@ -27,6 +27,9 @@ const favorite_router_1 = __importDefault(require("./router/product/favorite.rou
 const address_shipment_router_1 = __importDefault(require("./router/payment/address_shipment.router"));
 // FORMS
 const submission_credit_router_1 = __importDefault(require("./router/forms/submission_credit.router"));
+// ADMIN
+const user_admin_router_1 = __importDefault(require("./router/admin/user_admin.router"));
+const auth_admin_router_1 = __importDefault(require("./router/admin/auth_admin.router"));
 const app = (0, express_1.default)();
 (0, typeorm_1.createConnection)();
 // MIDLEWARE
@@ -52,5 +55,8 @@ app.use(favorite_router_1.default);
 app.use(address_shipment_router_1.default);
 // FORMS
 app.use(submission_credit_router_1.default);
+// ADMIN
+app.use(user_admin_router_1.default);
+app.use(auth_admin_router_1.default);
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ", 3000);

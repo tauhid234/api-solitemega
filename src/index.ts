@@ -31,6 +31,10 @@ import addressShipmentRouter from './router/payment/address_shipment.router';
 // FORMS
 import submissionCreditRouter from './router/forms/submission_credit.router';
 
+// ADMIN
+import userAdminRouter from './router/admin/user_admin.router';
+import authAdminRouter from './router/admin/auth_admin.router';
+
 
 const app = express();
 createConnection();
@@ -65,6 +69,10 @@ app.use(addressShipmentRouter);
 
 // FORMS
 app.use(submissionCreditRouter);
+
+// ADMIN
+app.use(userAdminRouter);
+app.use(authAdminRouter);
 
 app.listen(process.env.PORT || 3000);
 console.log("SERVER IS RUNNING ON PORT ",3000);
