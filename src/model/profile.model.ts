@@ -54,4 +54,24 @@ export class ProfileModel{
 
 
     }
+
+    public async SelectProfile(body : any, res : Response){
+        
+        let foundProdileUSer : any = await getRepository(Profile).find(body);
+
+        if(foundProdileUSer){
+
+            let output : any[] = [];
+
+            for(let i = 0; i < foundProdileUSer.length; i++){
+                output.push(foundProdileUSer[i]);
+            }
+
+            return res.status(200).send(MessageUtil.success("Data berhasil ditemukan", output));
+
+        }else{
+            return res.status(404).send(MessageUtil.failed("Data user admin is not found", 404));
+        }
+
+    }
 }

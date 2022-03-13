@@ -6,6 +6,7 @@ class ValidateBodyHelper {
     validateEntity(slice, req, res) {
         let path = req.path;
         let end_path = path.split("/");
+        console.log(req.body);
         for (let i = 0; i < Object.keys(slice).length; i++) {
             let s = slice[i].valueOf();
             let bodys = Object.keys(req.body);

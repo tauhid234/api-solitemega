@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { getConnection } from "typeorm";
+import { UpdateCategoryDto } from "../../dto/category/category.dto";
 import { Category } from "../../entity/product/category.entity";
 import { ValidateBodyHelper } from "../../lib/helper/validate_body.helper";
 import { MessageUtil } from "../../lib/util/message.util";
@@ -34,17 +35,10 @@ export class CategoryController{
 
         const model = new CategoryModel;
 
-        const prop = getConnection().getMetadata(Category).ownColumns.map(column => column.propertyName);
-        const slice = prop.slice(1);
-
         let validate_body = new ValidateBodyHelper;
-        let output = validate_body.validateEntity(slice, req, res);
+        let output = validate_body.validate(req.body, UpdateCategoryDto, res, req);
         if(output){
             return output;
-        }
-
-        if(output){
-            return res.status(400).send(MessageUtil.failed("Field "+output+" is required for update data", 400));
         }
 
         return model.UpdateCategory(req.body, res);

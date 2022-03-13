@@ -23,5 +23,9 @@ class ProfileController {
         }
         return model.createProfile(req, res);
     }
+    SelectProfileController(req, res) {
+        const model = new profile_model_1.ProfileModel;
+        return model.SelectProfile(req.body, res);
+    }
 }
 exports.ProfileController = ProfileController;

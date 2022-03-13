@@ -49,5 +49,20 @@ class ProfileModel {
             return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil disimpan", save));
         });
     }
+    SelectProfile(body, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let foundProdileUSer = yield (0, typeorm_1.getRepository)(profile_entity_1.Profile).find(body);
+            if (foundProdileUSer) {
+                let output = [];
+                for (let i = 0; i < foundProdileUSer.length; i++) {
+                    output.push(foundProdileUSer[i]);
+                }
+                return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil ditemukan", output));
+            }
+            else {
+                return res.status(404).send(message_util_1.MessageUtil.failed("Data user admin is not found", 404));
+            }
+        });
+    }
 }
 exports.ProfileModel = ProfileModel;

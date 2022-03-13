@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CategoryController = void 0;
 const typeorm_1 = require("typeorm");
+const category_dto_1 = require("../../dto/category/category.dto");
 const category_entity_1 = require("../../entity/product/category.entity");
 const validate_body_helper_1 = require("../../lib/helper/validate_body.helper");
 const message_util_1 = require("../../lib/util/message.util");
@@ -24,15 +25,10 @@ class CategoryController {
             return res.status(400).send(message_util_1.MessageUtil.failed("Field ID is required for update data", 400));
         }
         const model = new category_model_1.CategoryModel;
-        const prop = (0, typeorm_1.getConnection)().getMetadata(category_entity_1.Category).ownColumns.map(column => column.propertyName);
-        const slice = prop.slice(1);
         let validate_body = new validate_body_helper_1.ValidateBodyHelper;
-        let output = validate_body.validateEntity(slice, req, res);
+        let output = validate_body.validate(req.body, category_dto_1.UpdateCategoryDto, res, req);
         if (output) {
             return output;
-        }
-        if (output) {
-            return res.status(400).send(message_util_1.MessageUtil.failed("Field " + output + " is required for update data", 400));
         }
         return model.UpdateCategory(req.body, res);
     }

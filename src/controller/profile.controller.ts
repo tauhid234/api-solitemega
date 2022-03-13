@@ -32,4 +32,11 @@ export class ProfileController{
         
         return model.createProfile(req,res);
     }
+
+    public SelectProfileController(req : Request, res : Response){
+
+        const model = new ProfileModel;
+        return model.SelectProfile(req.body, res);
+
+    }
 }
