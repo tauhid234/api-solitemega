@@ -31,5 +31,9 @@ class SubmissionCreditController {
         }
         return model.AddSubmissionCredit(req, res);
     }
+    SubmissionCreditSelectController(req, res) {
+        const model = new submission_credit_model_1.SubmissionCreditModel;
+        return model.SelectSubmissionCredit(req.body, res);
+    }
 }
 exports.SubmissionCreditController = SubmissionCreditController;

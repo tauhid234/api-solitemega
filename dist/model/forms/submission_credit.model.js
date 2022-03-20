@@ -58,5 +58,16 @@ class SubmissionCreditModel {
             }
         });
     }
+    SelectSubmissionCredit(body, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let cek = yield (0, typeorm_1.getRepository)(submission_credit_entity_1.SubmissionCredit).find(body);
+            if (cek) {
+                return res.status(200).send(message_util_1.MessageUtil.success("Data berhasil ditemukan", cek));
+            }
+            else {
+                return res.status(404).send(message_util_1.MessageUtil.failed("Data Submission Kredit is not found", 404));
+            }
+        });
+    }
 }
 exports.SubmissionCreditModel = SubmissionCreditModel;

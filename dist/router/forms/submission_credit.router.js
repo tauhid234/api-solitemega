@@ -5,4 +5,5 @@ const submission_credit_controller_1 = require("../../controller/forms/submissio
 const submissionCreditController = new submission_credit_controller_1.SubmissionCreditController;
 const router = (0, express_1.Router)();
 router.post("/solite-api/submission-credit/add", submissionCreditController.SubmissionCreditAddController);
+router.post("/solite-api/submission-credit/select", submissionCreditController.SubmissionCreditSelectController);
 exports.default = router;

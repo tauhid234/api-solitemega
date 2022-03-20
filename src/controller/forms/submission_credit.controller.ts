@@ -40,4 +40,9 @@ export class SubmissionCreditController{
 
         return model.AddSubmissionCredit(req, res);
     }
+
+    public SubmissionCreditSelectController(req : Request, res : Response){
+        const model = new SubmissionCreditModel;
+        return model.SelectSubmissionCredit(req.body, res);
+    }
 }

@@ -60,4 +60,17 @@ export class SubmissionCreditModel{
         }
 
     }
+
+    public async SelectSubmissionCredit(body : any, res : Response){
+
+        let cek = await getRepository(SubmissionCredit).find(body);
+        if(cek){
+
+            return res.status(200).send(MessageUtil.success("Data berhasil ditemukan", cek));
+
+        }else{
+            return res.status(404).send(MessageUtil.failed("Data Submission Kredit is not found", 404));
+        }
+        
+    }
 }
